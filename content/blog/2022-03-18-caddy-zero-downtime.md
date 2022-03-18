@@ -50,7 +50,7 @@ spin.brian.dev {
 	reverse_proxy localhost:3000 localhost:3001 {
         lb_policy round_robin
         lb_try_duration 2s
-        health_uri /health
+        health_uri /healthz
         health_interval 1s
         health_timeout 500ms
 
@@ -61,7 +61,7 @@ This configuration tells Caddy to service requests by choosing a spin instance f
 
 ### Step 3: Create a health check
 
-This was the easiest part. I created a markdown file called `health.md`. If the spin instance is serving requests, it will return a 200 status code. Caddy checks this URI to see if the spin instance is healthy every second.
+This was the easiest part. Spin has a built-in health endpoint at `/healthz` that returns `OK` if the instance is running.
 
 ### Step 4: Update the content
 
