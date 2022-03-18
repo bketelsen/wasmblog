@@ -65,15 +65,26 @@ This was the easiest part. I created a markdown file called `health.md`. If the 
 
 ### Step 4: Update the content
 
-The content is stored in a git repository and cloned on the host at `/opt/spin/wasmblog`. I use the `git` command to pull the latest changes from the repository. Here's the script that does it:
+The content is stored in a git repository and cloned on the host at `/opt/spin/wasmblog`. I use the `git` command to pull the latest changes from the repository. If the git hash is different after pulling, there's been an update, so we'll restart the services. Here's the script that does it:
 
 ```bash
 #!/bin/bash
 
-cd /opt/spin/wasmblog && git pull && chown -R spin:spin .
-systemctl restart bartholomew.service
-sleep 10
-systemctl restart bartholomew2.service
+cd /opt/spin/wasmblog || exit
+old_version="$(git rev-parse --short HEAD)"
+git pull && chown -R spin:spin .
+new_version="$(git rev-parse --short HEAD)"
+
+if [ "$old_version" = "$new_version" ]; then
+    echo "No changes"
+    exit 0
+else
+    echo "Changes detected, restarting services"
+    systemctl restart bartholomew.service
+    sleep 10
+    systemctl restart bartholomew2.service
+fi
+
 ```
 
 ### Step 5: Schedule the update
