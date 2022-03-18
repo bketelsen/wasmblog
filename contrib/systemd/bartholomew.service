@@ -1,0 +1,14 @@
+[Unit]
+Description=Bartholomew Blog served by Spin
+Requires=network.target
+After=network.target
+
+[Service]
+Type=simple
+User=spin
+Group=spin
+WorkingDirectory=/opt/spin/wasmblog
+ExecStart=/usr/local/bin/spin -f spin.toml
+Restart=always
+RestartSec=10
+
