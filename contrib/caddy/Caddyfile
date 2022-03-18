@@ -1,7 +1,7 @@
 spin.brian.dev {
 	reverse_proxy localhost:3000 localhost:3001 {
         lb_policy round_robin
-        fail_duration 2
+        fail_duration 2s
         unhealthy_request_count 2
 
     }
