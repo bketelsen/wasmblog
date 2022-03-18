@@ -1,4 +1,6 @@
 #!/bin/bash
+systemctl stop bartholomew.service
+systemctl stop bartholomew2.service
 
 cp ./contrib/systemd/bartholomew.service /etc/systemd/system/
 systemctl daemon-reload
