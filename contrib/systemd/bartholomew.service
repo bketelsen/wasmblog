@@ -8,7 +8,7 @@ Type=simple
 User=spin
 Group=spin
 WorkingDirectory=/opt/spin/wasmblog
-ExecStart=/usr/local/bin/spin --file spin.toml
+ExecStart=/usr/local/bin/spin up --file spin.toml
 Restart=always
 RestartSec=10
 
