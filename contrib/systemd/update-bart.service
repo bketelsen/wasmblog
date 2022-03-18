@@ -3,8 +3,8 @@ Description=Update blog content
 
 [Service]
 Type=oneshot
-User=spin
-Group=spin
+User=root
+Group=root
 WorkingDirectory=/opt/spin/wasmblog
 ExecStart=/opt/spin/wasmblog/contrib/update.sh
 

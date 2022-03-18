@@ -1,3 +1,6 @@
 #!/bin/bash
 
-cd /opt/spin/wasmblog && git pull
+cd /opt/spin/wasmblog && git pull && chown -R spin:spin .
+systemctl restart bartholomew.service
+sleep 5
+systemctl restart bartholomew2.service
