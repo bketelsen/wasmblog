@@ -1,0 +1,49 @@
+{{> content_top }}
+<div class="max-w-3xl mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+    <h1 class="sr-only">Profile</h1>
+    <!-- Main 3 column grid -->
+    <div class="grid grid-cols-1 gap-4 items-start lg:grid-cols-3 lg:gap-8">
+        <!-- Left column -->
+        <div class="grid grid-cols-1 gap-4 lg:col-span-2">
+            <!-- Welcome panel -->
+{{> pagehead }}
+
+            <!-- Content panel -->
+            <section aria-labelledby="content-title">
+
+                <div class="rounded-lg bg-white shadow pt-10 pb-20 px-4 sm:px-6 lg:pt-14 lg:pb-28 lg:px-8">
+                    <div class="relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl">
+                        <div class="relative py-6 bg-white overflow-hidden">
+                            <div class="relative px-4 sm:px-6 lg:px-8">
+                                <div class="text-lg max-w-prose mx-auto">
+                                    <h1>
+
+                                        <span
+                                            class="block text-base text-center uppercase">{{#each page.head.tags}}<span class="inline-flex items-center px-2.5 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800"> #{{this}} </span>
+                                            &nbsp;{{/each}}</span>
+
+                                        <span
+                                            class="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">{{page.head.title}}</span>
+                                    </h1>
+                                    <p class="mt-8 text-xl text-gray-500 leading-8">{{page.head.description}}</p>
+                                </div>
+                                <div class="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto">
+                                    {{{page.body}}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- Right column -->
+        <div class="grid grid-cols-1 gap-4">
+            {{> recent }}
+        </div>
+    </div>
+</div>
+
+{{> content_bottom }}

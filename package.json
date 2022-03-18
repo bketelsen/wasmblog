@@ -1,0 +1,40 @@
+{
+  "name": "bjk-blog",
+  "version": "0.0.2",
+  "homepage": "https://github.com/fermyon/spin",
+  "author": {
+    "name": "Fermyon Engineering",
+    "email": "engineering@fermyon.com",
+    "url": "https://fermyon.com"
+  },
+  "description": "Documentation website for Spin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fermyon/spin.git"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "fermyon",
+    "styleguide",
+    "sass",
+    "design",
+    "responsive"
+  ],
+  "bugs": {
+    "url": "https://github.com/fermyon/spin/issues"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "2.3.2",
+    "@tailwindcss/forms": "^0.5.0",
+    "@tailwindcss/line-clamp": "^0.3.1",
+    "@tailwindcss/typography": "^0.5.2",
+    "nodemon": "^2.0.15",
+    "parcel": "^2.3.2",
+    "sass": "^1.49.9",
+    "tailwindcss": "^3.0.23"
+  },
+  "scripts": {
+    "css": "tailwindcss -i ./css/input.css -o ./static/bartholomew.css",
+    "spin": "nodemon --watch content --watch static --watch templates --ext md,rhai,hbs,css --verbose --legacy-watch --exec '~/bin/spin up --file spin.toml'"
+  }
+}

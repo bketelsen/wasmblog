@@ -1,0 +1,18 @@
+title = "Brian Ketelsen"
+# logo = "URL to logo"
+base_url = "https://bartholomew.fly.dev"
+about = "Brian Ketelsen is an internet personality."
+
+[extra]
+copyright = "Brian Ketelsen"
+github = "https://github.com/bketelsen"
+twitter = "https://twitter.com/bketelsen"
+
+# Can be used by atom and other pages
+# logo = "/static/images/logo.png"
+
+# Can be used by templates to populate a favicon
+# favicon = "/static/images/favicon.png"
+
+# Style of date to print
+date_style = "%B %e, %Y"

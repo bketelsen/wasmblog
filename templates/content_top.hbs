@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html class="h-full bg-gray-100">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{{page.head.title}} | {{site.info.title}}</title>
+    {{#if page.head.description}}
+        <meta name="description" content="{{page.head.description}}">
+    {{/if}}
+    <link href="/atom" type="application/atom+xml" rel="alternate" title="Atom feed" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+
+    <link rel="stylesheet" href="/static/bartholomew.css" />
+</head>
+
+<body class="h-full">
+    <div class="min-h-full">
+        {{> navbar}}
+        <main class="-mt-24 pb-8">
