@@ -159,6 +159,23 @@ systemctl restart caddy.service
 
 The timer fires every 5 minutes, which starts the update-bart service. The update-bart service runs the update script, which updates the content of the blog, then restarts the spin instances sequentially with a 10s delay. I could have added more logic to the update script for safety to ensure that each service is actually running before moving on to the next one. Maybe another day I'll look at that. For now this is good enough.
 
+## Optional: Use Caddy API to remove backends
+
+Caddy has an API that listens on localhost only, so you could use it to remove the backends from the reverse proxy before restarting them.  Here's a taste of what that looks like:
+
+```
+both='[{"dial": "localhost:3000"},{"dial": "localhost:3001"}]'
+first='[{"dial": "localhost:3000"}]'
+last='[{"dial": "localhost:3001"}]'
+
+echo "Removing port 3000"
+curl -X PATCH \
+    -H "Content-Type: application/json" \
+    -d "$last" \
+    "http://localhost:2019/config/apps/http/servers/srv0/routes/0/handle/0/routes/0/handle/0/upstreams"
+
+```
+This method guarantees that the spin instances won't be in the pool when the update is happening. I love it when everything has an API.
 ## Conclusion
 
 Using a combination of systemd timers and systemd services to orchestrate services is a great way to manage your uptime. The key is correctly configuring the load balancer and health checks.
