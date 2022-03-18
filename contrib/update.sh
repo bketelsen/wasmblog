@@ -2,5 +2,5 @@
 
 cd /opt/spin/wasmblog && git pull && chown -R spin:spin .
 systemctl restart bartholomew.service
-sleep 5
+sleep 10
 systemctl restart bartholomew2.service
