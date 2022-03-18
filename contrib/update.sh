@@ -7,7 +7,7 @@ new_version="$(git rev-parse --short HEAD)"
 
 if [ "$old_version" = "$new_version" ]; then
     echo "No changes"
-    return
+    exit 0
 else
     echo "Changes detected, restarting services"
     systemctl restart bartholomew.service
