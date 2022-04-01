@@ -14,7 +14,7 @@ Let's set the stage... I'm running this blog using [Spin](https://github.com/fer
 
 The problem I set out to solve is how to update the content of the site without any downtime. Spin won't notice any changes to the files it is serving, so I have to manually restart each instance when there is new content. Here's how I went about it:
 
-### Step 1: Create a two spin instances
+### Step 1: Create a two spin instance
 
 I created `systemd` unit files for two instances of spin running on ports 3000 and 3001.
 
@@ -126,6 +126,9 @@ WantedBy=multi-user.target
 ```
 
 ### Step 6: Install everything
+
+
+
 
 I created a one-time script to install everything.
 

@@ -31,10 +31,53 @@
     "nodemon": "^2.0.15",
     "parcel": "^2.3.2",
     "sass": "^1.49.9",
-    "tailwindcss": "^3.0.23"
+    "tailwindcss": "^3.0.23",
+    "chart.js": "^3.7.1",
+    "fuse.js": "^6.5.3",
+    "katex": "^0.15.3",
+    "mermaid": "^8.14.0",
+    "prettier": "^2.3.2",
+    "prettier-plugin-go-template": "^0.0.11",
+    "rimraf": "^3.0.2",
+    "vendor-copy": "^3.0.1"
   },
   "scripts": {
-    "css": "tailwindcss -i ./css/input.css -o ./static/bartholomew.css",
+    "preinstall": "rimraf static/assets/vendor",
+    "postinstall": "vendor-copy",
+    "assets": "rimraf static/assets/vendor && vendor-copy",
+    "dev": "NODE_ENV=development ./node_modules/tailwindcss/lib/cli.js -i ./assets/css/main.css -o ./static/assets/css/compiled/main.css --jit -w",
+    "build": "NODE_ENV=production ./node_modules/tailwindcss/lib/cli.js -i ./assets/css/main.css -o ./static/assets/css/compiled/main.css --jit",
     "spin": "nodemon --watch content --watch static --watch templates --ext md,rhai,hbs,css --verbose --legacy-watch --exec '~/bin/spin up --file spin.toml'"
-  }
+  },
+  "vendorCopy": [],
+  "devVendorCopy": [
+    {
+      "from": "node_modules/mermaid/dist/mermaid.min.js",
+      "to": "static/assets/lib/mermaid/mermaid.min.js"
+    },
+    {
+      "from": "node_modules/chart.js/dist/chart.min.js",
+      "to": "static/assets/lib/chart/chart.min.js"
+    },
+    {
+      "from": "node_modules/katex/dist/katex.min.js",
+      "to": "static/assets/lib/katex/katex.min.js"
+    },
+    {
+      "from": "node_modules/katex/dist/katex.min.css",
+      "to": "static/assets/lib/katex/katex.min.css"
+    },
+    {
+      "from": "node_modules/katex/dist/contrib/auto-render.min.js",
+      "to": "static/assets/lib/katex/auto-render.min.js"
+    },
+    {
+      "from": "node_modules/katex/dist/fonts/",
+      "to": "static/assets/lib/katex/fonts/"
+    },
+    {
+      "from": "node_modules/fuse.js/dist/fuse.min.js",
+      "to": "static/assets/lib/fuse/fuse.min.js"
+    }
+  ]
 }

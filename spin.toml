@@ -6,7 +6,7 @@ authors = [ "Brian Ketelsen <bketelsen@gmail.com>" ]
 trigger = { type = "http", base = "/" }
 
 [[component]]
-source = "modules/bartholomew-wagi.wasm"
+source = "modules/bartholomew.wasm"
 id = "bartholomew"
 files = [ "content/**/*" , "templates/*", "scripts/*", "config/*"]
 [component.trigger]
