@@ -9,16 +9,45 @@ author = "Matt Butcher"
 author_page = "/author/butcher"
 
 ---
-It might be hard to spell, but fortunately you won't have to spell it that often.
+these are  [rhai scripts](https://github.com/rhaiscript/rhai) producing alerts:
 
-Bartholomew is a Micro-CMS for hosting Markdown content on a WebAssembly server.
-It can run on any [Wagi-compliant runtime](https://github.com/deislabs/wagi), including
-Wagi, Hippo, and Wagi.Net.
+{{ alert "check" "Check" }}
+{{ alert "warning" "Warning" }}
+{{ alert "circle_info" "Circle Info" }}
+{{ alert "comment" "Comment" }}
+
+the contents of the script:
+
+```
+let icon = params[0];
+let msg = params[1];
+
+let icons = #{
+  warning:`<svg... svg elided ...`,
+  check:`...`,
+  circle_info: `...`,
+  comment: `...`,
+};
 
 
+`<div class="flex px-4 py-3 rounded-md bg-primary-100 dark:bg-primary-900">
+  <span class="ltr:pr-3 rtl:pl-3 text-primary-400">
+  <span class="relative inline-block align-text-bottom icon">`
+  + icons[icon] +
+  `</span>
+  </span>
+  <span class="dark:text-neutral-300">` + msg +
+ ` </span>
+</div>`
 
-## Getting Started
+```
+and the invocation in markdown:
+```
+{ { alert "check" "Brian" } }
 
-To get started, edit this page. While Bartholomew doesn't make a lot of assumptions about
-your site, it _does_ assume that requests to the root (`/`) should be directed to
-`index.md`.
+
+```
+I added spaces between the braces so it doesn't get rendered by the script engine. Seems like that might be something we'd want to check for in the render function.
+
+## On with the show
+

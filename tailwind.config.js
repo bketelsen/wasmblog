@@ -10,7 +10,7 @@ function varWithOpacity(variable) {
 }
 
 module.exports = {
-  content: ["./templates/**/*.{hbs,js}"],
+  content: ["./templates/**/*.{hbs,js}", "./scripts/**/*.rhai"],
   darkMode: "class",
   theme: {
     extend: {
